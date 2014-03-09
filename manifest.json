@@ -1,7 +1,10 @@
 {
+  "manifest_version": 2,
   "name": "Bookmarks+",
   "version": "0.1.0",
-  "manifest_version": 2,
+  "default_locale": "en",
+  "description": "A bookmarks app.",
+  "homepage_url": "https://github.com/AndersDJohnson/chrome-bookmarks-plus",
   "app": {
     "launch": {
       "local_path": "index.html"
