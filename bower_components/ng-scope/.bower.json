@@ -1,0 +1,36 @@
+{
+  "name": "ng-scope",
+  "main": "ng-scope.js",
+  "version": "0.1.1",
+  "homepage": "https://github.com/AndersDJohnson/ng-scope",
+  "description": "Angular directive for extending scope.",
+  "keywords": [
+    "angular",
+    "angular.js",
+    "angular-directive"
+  ],
+  "authors": [
+    "Anders D. Johnson"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.14"
+  },
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "cb2d35cf135f2a6a7bf51ba5150704e386999dcc"
+  },
+  "_source": "git://github.com/AndersDJohnson/ng-scope.git",
+  "_target": "~0.1.1",
+  "_originalSource": "ng-scope",
+  "_direct": true
+}
