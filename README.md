@@ -1,7 +1,7 @@
 Bookmarks+
 =====================
 
-An bookmarks extension for Google Chrome.
+An bookmarks app for Google Chrome.
 
 ## Features
 
