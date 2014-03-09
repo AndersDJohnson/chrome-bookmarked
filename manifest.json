@@ -1,0 +1,13 @@
+{
+  "name": "Bookmarks",
+  "version": "0.1",
+  "manifest_version": 2,
+  "app": {
+    "launch": {
+      "local_path": "index.html"
+    }
+  },
+  "permissions": [
+    "bookmarks"
+  ]
+}

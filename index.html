@@ -1,0 +1,164 @@
+<!doctype html>
+<html ng-app="bookmarks">
+<head>
+  <meta charset="UTF-8">
+  <title>Bookmarks</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="bower_components/ng-table/ng-table.css" />
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/angular-ui/build/angular-ui.js"></script>
+  <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/bootbox/bootbox.js"></script>
+  <script src="bower_components/ng-table/ng-table.src.js"></script>
+  <script src="bower_components/ng-scope/ng-scope.js"></script>
+  <script src="index.js"></script>
+</head>
+<body>
+  
+  <script type="text/ng-template" id="dateInput">
+      <label for="{{name}}" class="control-label col-sm-1">
+        {{label || name}}
+      </label>
+      <div class="col-sm-4">
+        <div class="input-group">
+          <input name="{{name}}" type="text" class="form-control"
+            ng-model="form[name]"
+            ng-change="change()"
+            datepicker-popup
+            is-open="datepickerStates[name]"
+            show-weeks="false"
+            close-text="Close"
+          />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="clear($event, name)">
+              <i class="glyphicon glyphicon-remove"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+  </script>
+
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bookmarks+</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Search</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div ng-controller="Search">
+
+    <div class="container">
+
+      <h2>Search</h2>
+
+      <div class="row">
+
+        <form class="form-horizontal" role="form" ng-submit="submit($event)">
+          <div class="form-group">
+            <label for="text" class="control-label col-sm-2">
+              Text:
+            </label>
+            <div class="col-sm-10">
+              <div class="input-group">
+                <input name="text" type="search" class="form-control"
+                  autofocus
+                  required
+                  ng-model="form.text"
+                />
+                <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="clear($event, 'text')">
+                    <i class="glyphicon glyphicon-remove"></i>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2">
+              Date added:
+            </label>
+            <div ng-include src="'dateInput'" ng-scope="{
+              name:'dateAddedStart',
+              label: 'Start:'
+            }"></div>
+            <div ng-include src="'dateInput'" ng-scope="{
+              name:'dateAddedEnd',
+              label: 'End:'
+            }"></div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-default"
+                ng-click="doSearch()"
+                ng-disabled="loading"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row">
+        <button type="button" class="btn btn-default pull-right"
+          data-toggle="collapse"
+          data-target=".dev">
+          Dev
+        </button>
+
+        <div class="dev row collapse">
+          <div class="col-sm-6">
+            <h2>Form</h2>
+            <pre>{{ form | json }}</pre>
+          </div>
+          <div class="col-sm-6">
+            <h2>Sort</h2>
+            <pre>{{tableParams.sorting() | json}}</pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <button ng-click="tableParams.sorting({})" class="btn btn-default pull-right">
+          Clear sort
+        </button>
+      </div>
+
+      <table ng-table="tableParams" class="table table-hover table-condensed">
+        <tr ng-repeat="result in $data">
+          <td width="30" style="text-align: left">
+            <input type="checkbox" ng-model="checkboxes.items[result.id]" />
+          </td>
+          <td data-title="'title'" sortable="'title'" class="col-sm-9">
+            <a href="{{result.url}}" target="_blank">{{result.title}}</a>
+          </td>
+          <td data-title="'date added'" sortable="'dateAdded'" class="col-sm-2">
+            {{result.dateAdded | date}}
+          </td>
+          <td data-title="'JSON'" class="col-sm-1">
+            <a ng-click="showJSON($event, result)">JSON</a>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
