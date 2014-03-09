@@ -1,4 +1,4 @@
-Bookmarks+
+Bookmarks Plus
 =====================
 
 A bookmarks app for Google Chrome.
