@@ -38,10 +38,28 @@ app.controller('Search', [
       this.doSearch();
     };
 
-    $scope.showJSON = function ($event, json) {
+    $scope.showJSON = function ($event, result) {
       $event.preventDefault();
       $event.stopPropagation();
-      bootbox.alert('<pre>' + $filter('json')(json) + '</pre>');
+      bootbox.alert('<pre>' + $filter('json')(result) + '</pre>');
+    }
+
+    $scope.delete = function ($event, result, index) {
+      $event.preventDefault();
+      $event.stopPropagation();
+      bootbox.confirm('Delete "' + result.title + '"?', function (confirmed) {
+        if (confirmed) {
+          chrome.bookmarks.remove(result.id, function () {
+            $scope.$apply(function () {
+              var foundIndex = $scope.results.findIndex(function (val, i) {
+                return val.id == result.id;
+              });
+              $scope.results.splice(foundIndex, 1);
+              $scope.tableParams.reload();
+            });
+          });
+        }
+      });
     }
 
     $scope.submit = function ($event) {

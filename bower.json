@@ -17,6 +17,8 @@
     "bootbox": "~4.2.0",
     "angular-ui": "~0.4.0",
     "angular-ui-bootstrap-bower": "~0.10.0",
-    "ng-scope": "~0.1.1"
+    "ng-scope": "~0.1.1",
+    "fontawesome": "~4.2.0",
+    "Array.prototype.findIndex": "~1.0.0"
   }
 }

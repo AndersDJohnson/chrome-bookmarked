@@ -5,6 +5,8 @@
   <title>Bookmarked</title>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/ng-table/ng-table.css" />
+  <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css" />
+  <script src="bower_components/Array.prototype.findIndex/index.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
@@ -150,12 +152,13 @@
           <td data-title="'added'" sortable="'dateAdded'" class="col-sm-2">
             {{result.dateAdded | date}}
           </td>
-          <td data-title="'JSON'" class="col-sm-1">
-            <a ng-click="showJSON($event, result)">JSON</a>
+          <td data-title="'...'" class="col-sm-2">
+            <button ng-click="delete($event, result, $index)" class="glyphicon glyphicon-remove" title="delete"></button>
+            <button ng-click="showJSON($event, result)" class="fa fa-code" title="json"></button>
           </td>
         </tr>
       </table>
-
+  
     </div>
 
   </div>
