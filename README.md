@@ -1,9 +1,9 @@
-Bookmarks Plus
+Bookmarked
 =====================
 
 A bookmarks app for Google Chrome.
 
-https://chrome.google.com/webstore/detail/bookmarks-plus/ikdhdodmmpcdfacbjionjimpdkfgblag
+https://chrome.google.com/webstore/detail/bookmarked/ikdhdodmmpcdfacbjionjimpdkfgblag
 
 ## Features
 
