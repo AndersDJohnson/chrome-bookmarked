@@ -50,7 +50,7 @@ app.controller('Search', [
     };
 
     $scope.doSearch = function(text) {
-      text = text || $scope.form.text;
+      text = text || $scope.form.text || '';
       console.log('searching: "' + text + '"');
       $scope.loading = true;
       chrome.bookmarks.search(text, function (results) {
